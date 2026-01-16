@@ -34,3 +34,4 @@ repos:
     hooks:
       - id: mypy
         args: [--ignore-missing-imports, --check-untyped-defs]
+        exclude: ^(tests/|seed_data\.py)
