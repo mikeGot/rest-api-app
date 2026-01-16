@@ -62,39 +62,6 @@ X-API-Key: your-api-key
 poetry install --with dev
 ```
 
-### Линтеры и форматирование кода
-
-Проект использует следующие инструменты для качества кода:
-- **ruff** - быстрый линтер (замена flake8, isort)
-- **black** - форматирование кода
-- **isort** - сортировка импортов
-- **mypy** - проверка типов
-
-#### Запуск линтеров
-
-```bash
-# Проверка всех линтеров
-make lint
-
-# Форматирование кода
-make format
-
-# Или через poetry напрямую
-poetry run ruff check app tests
-poetry run black app tests
-poetry run isort app tests
-poetry run mypy app
-```
-
-### Pre-commit hooks
-
-Для автоматической проверки кода перед коммитом:
-
-```bash
-make pre-commit
-# или
-poetry run pre-commit install
-```
 
 Теперь при каждом коммите будут автоматически запускаться линтеры.
 
@@ -102,47 +69,6 @@ poetry run pre-commit install
 
 Проект использует **pytest** для тестирования.
 
-#### Запуск тестов
-
-```bash
-# Все тесты
-make test
-
-# Только unit тесты
-make test-unit
-
-# Только integration тесты
-make test-int
-
-# Тесты с покрытием
-make test-cov
-```
-
-#### Структура тестов
-
-```
-tests/
-├── conftest.py              # Фикстуры (test database, client, test data)
-├── unit/                    # Unit тесты
-│   ├── test_building_repository.py
-│   ├── test_activity_repository.py
-│   └── test_organization_repository.py
-└── integration/             # Integration тесты
-    ├── test_api_buildings.py
-    └── test_api_organizations.py
-```
-
-#### Маркеры тестов
-
-- `@pytest.mark.unit` - unit тесты
-- `@pytest.mark.integration` - интеграционные тесты
-- `@pytest.mark.slow` - медленные тесты
-
-Запуск тестов по маркеру:
-```bash
-poetry run pytest -m unit
-poetry run pytest -m integration
-```
 
 ## Полезные команды
 
@@ -187,7 +113,7 @@ alembic downgrade -1
 alembic downgrade <revision>
 ```
 
-## Seed данные
+## Тестовые данные
 
 Заполнить базу тестовыми данными:
 
